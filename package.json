@@ -1,5 +1,5 @@
 {
-  "name": "vue-mailchimp-subscribe",
+  "name": "@my-username/vue-mailchimp-subscribe",
   "version": "1.1.0",
   "author": "Philipp Kühn",
   "license": "MIT",
@@ -34,5 +34,6 @@
   },
   "devDependencies": {
     "microbundle": "^0.11.0"
-  }
+  },
+  "description": "Renderless Vue.js component for Mailchimp list subscriptions."
 }
