@@ -11,7 +11,11 @@ Renderless Vue.js component for Mailchimp list subscriptions.
     @error="onError"
     @success="onSuccess"
   >
+<<<<<<< Updated upstream
     <template v-slot="{ subscribe, setEmail, error, success, loading }">
+=======
+   <template v-slot="{ subscribe, setField, error, success, loading }">
+>>>>>>> Stashed changes
       <form @submit.prevent="subscribe">
         <input type="email" @input="setEmail($event.target.value)" />
         <button type="submit">Submit</button>

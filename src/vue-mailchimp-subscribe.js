@@ -1,5 +1,5 @@
-import jsonp from 'jsonp'
-import queryString from 'query-string'
+import jsonp from "jsonp";
+import queryString from "query-string";
 
 export default {
   props: {
@@ -25,7 +25,7 @@ export default {
       success: false,
       error: null,
       loading: false,
-    }
+    };
   },
 
   computed: {
@@ -33,12 +33,18 @@ export default {
       return queryString.stringify({
         u: this.userId,
         id: this.listId,
+<<<<<<< Updated upstream
         EMAIL: this.email,
       })
+=======
+        ...this.fields,
+      });
+>>>>>>> Stashed changes
     },
   },
 
   methods: {
+<<<<<<< Updated upstream
     setEmail(value = '') {
       this.email = value.trim()
     },
@@ -46,39 +52,59 @@ export default {
     subscribe() {
       if (this.email === null || this.loading) {
         return
+=======
+    // deprecated in favour of `setField('EMAIL', value)`
+    setEmail(value = "") {
+      this.fields["EMAIL"] = value.trim();
+    },
+
+    setField(fieldKey, fieldValue) {
+      this.fields[fieldKey] = fieldValue;
+    },
+
+    subscribe() {
+      if (!this.fields["EMAIL"] || this.loading) {
+        return;
+>>>>>>> Stashed changes
       }
 
-      this.success = false
-      this.error = null
-      this.loading = true
+      this.success = false;
+      this.error = null;
+      this.loading = true;
 
-      const url = `${this.url}?${this.data}`
+      const url = `${this.url}?${this.data}`;
 
-      jsonp(url, { param: 'c' }, this.onResponse)
+      jsonp(url, { param: "c" }, this.onResponse);
     },
 
     onResponse(error, data) {
-      this.loading = false
+      this.loading = false;
 
       if (error) {
-        this.error = error
+        this.error = error;
       }
 
-      if (data && data.result === 'error') {
-        this.error = this.formatErrorMessage(data.msg)
+      if (data && data.result === "error") {
+        this.error = this.formatErrorMessage(data.msg);
       }
 
       if (this.error) {
-        this.$emit('error', this.error)
+        this.$emit("error", this.error);
       } else {
+<<<<<<< Updated upstream
         this.success = true
         this.email = null
         this.$emit('success')
+=======
+        this.success = true;
+        this.fields = {};
+        this.$emit("success");
+>>>>>>> Stashed changes
       }
     },
 
     formatErrorMessage(message) {
-      return message.replace('0 - ', '')
+      return message.replace("0 - ", "");
     },
   },
 
@@ -89,6 +115,10 @@ export default {
       error: this.error,
       success: this.success,
       loading: this.loading,
-    })
+    });
   },
+<<<<<<< Updated upstream
 }
+=======
+};
+>>>>>>> Stashed changes
